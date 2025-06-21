@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Calendar, Clock, Users, Phone, Mail, User, Music, ArrowLeft, MapPin, Star } from "lucide-react";
 import { Table, Reservation, Restaurant } from "../types";
 import { restaurantTables } from "../data/mockData";
@@ -9,9 +9,7 @@ interface TableReservationProps {
 }
 
 export default function TableReservation({ restaurant, onBackToSelection }: TableReservationProps) {
-  const [tables, setTables] = useState<Table[]>(
-    restaurant ? restaurantTables[restaurant.id] || [] : []
-  );
+  const [tables, setTables] = useState<Table[]>([]);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [guests, setGuests] = useState(2);
@@ -21,6 +19,13 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
     email: "",
   });
   const [showForm, setShowForm] = useState(false);
+
+  // Update tables when restaurant changes
+  useEffect(() => {
+    if (restaurant) {
+      setTables(restaurantTables[restaurant.id] || []);
+    }
+  }, [restaurant]);
 
   const timeSlots = ["18:00", "19:00", "20:00", "21:00", "22:00", "23:00"];
 
@@ -99,20 +104,27 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
               เลือกโต๊ะของคุณ
             </h2>
 
-            <div className="relative bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 rounded-2xl p-8 min-h-[500px] border border-gray-700/50 shadow-inner">
+            <div className="relative bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 rounded-2xl p-8 min-h-[600px] border border-gray-700/50 shadow-inner overflow-hidden">
+              {/* Stage/Bar Area */}
               <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border-2 border-amber-500/40 rounded-xl px-6 py-3 backdrop-blur-sm">
                 <div className="flex items-center space-x-2">
                   <Music className="h-4 w-4 text-amber-400" />
                   <span className="text-amber-300 text-sm font-semibold">
-                    เวทีแสดง
+                    {restaurant.id === '1' ? 'เวทีแสดง' : 
+                     restaurant.id === '2' ? 'วิวแม่น้ำ' :
+                     restaurant.id === '3' ? 'บาร์เคาน์เตอร์' :
+                     restaurant.id === '4' ? 'สวนกลาง' :
+                     restaurant.id === '5' ? 'Dance Floor' : 'บาร์หลัก'}
                   </span>
                 </div>
               </div>
 
+              {/* Background Effects */}
               <div className="absolute inset-0 bg-gradient-radial from-purple-500/5 via-transparent to-transparent rounded-2xl"></div>
               <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-radial from-amber-500/10 to-transparent rounded-full blur-xl"></div>
               <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-radial from-purple-500/10 to-transparent rounded-full blur-xl"></div>
 
+              {/* Tables */}
               {tables.map((table) => (
                 <button
                   key={table.id}
@@ -122,9 +134,9 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
                   disabled={!table.isAvailable}
                   className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 group ${
                     table.isSelected
-                      ? "scale-125 z-10"
+                      ? "scale-110 z-10"
                       : table.isAvailable
-                      ? "hover:scale-110 z-0"
+                      ? "hover:scale-105 z-0"
                       : "cursor-not-allowed opacity-60"
                   }`}
                   style={{
@@ -133,7 +145,7 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
                   }}
                 >
                   <div
-                    className={`relative w-16 h-16 rounded-2xl flex items-center justify-center text-sm font-bold shadow-lg border-2 transition-all duration-300 ${
+                    className={`relative w-12 h-12 rounded-xl flex items-center justify-center text-xs font-bold shadow-lg border-2 transition-all duration-300 ${
                       table.isSelected
                         ? "bg-gradient-to-br from-amber-400 to-orange-500 text-white border-amber-300 shadow-amber-500/50 shadow-2xl"
                         : table.isAvailable
@@ -143,15 +155,15 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
                   >
                     <span className="relative z-10">{table.number}</span>
                     {table.isSelected && (
-                      <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-orange-500/20 rounded-2xl animate-pulse"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-orange-500/20 rounded-xl animate-pulse"></div>
                     )}
                     {table.isAvailable && !table.isSelected && (
-                      <div className="absolute -inset-1 bg-gradient-to-br from-emerald-400/20 to-green-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-1 bg-gradient-to-br from-emerald-400/20 to-green-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     )}
                   </div>
 
                   <div
-                    className={`absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900/90 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap ${
+                    className={`absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-gray-900/90 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap ${
                       !table.isAvailable ? "hidden" : ""
                     }`}
                   >
@@ -159,6 +171,16 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
                   </div>
                 </button>
               ))}
+
+              {/* Layout Guide Lines (subtle) */}
+              {restaurant.id === '1' && (
+                <>
+                  <div className="absolute top-[25%] left-0 right-0 h-px bg-gray-600/20"></div>
+                  <div className="absolute top-[40%] left-0 right-0 h-px bg-gray-600/20"></div>
+                  <div className="absolute top-[55%] left-0 right-0 h-px bg-gray-600/20"></div>
+                  <div className="absolute top-[70%] left-0 right-0 h-px bg-gray-600/20"></div>
+                </>
+              )}
             </div>
 
             <div className="mt-6 flex items-center justify-between text-sm bg-gray-800/50 rounded-xl p-4">
@@ -175,6 +197,9 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
                   <div className="w-4 h-4 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg shadow-sm"></div>
                   <span className="text-gray-300">เลือกแล้ว</span>
                 </div>
+              </div>
+              <div className="text-gray-400">
+                รวม {tables.length} โต๊ะ | ว่าง {tables.filter(t => t.isAvailable).length} โต๊ะ
               </div>
             </div>
           </div>
@@ -255,16 +280,25 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
                   <div className="text-white text-sm space-y-1">
                     <p>โต๊ะหมายเลข {selectedTable.number}</p>
                     <p>จำนวนที่นั่ง: {selectedTable.seats} คน</p>
+                    <p className="text-amber-200">
+                      {selectedTable.seats >= guests 
+                        ? `เหมาะสำหรับ ${guests} คน` 
+                        : `⚠️ โต๊ะนี้มี ${selectedTable.seats} ที่นั่ง แต่คุณต้องการ ${guests} คน`
+                      }
+                    </p>
                   </div>
                 </div>
               )}
 
               <button
                 onClick={() => setShowForm(true)}
-                disabled={!selectedTable || !selectedDate || !selectedTime}
+                disabled={!selectedTable || !selectedDate || !selectedTime || (selectedTable && selectedTable.seats < guests)}
                 className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 disabled:from-gray-600 disabled:to-gray-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-[1.02] disabled:transform-none"
               >
-                {selectedTable ? "ยืนยันการจอง" : "เลือกโต๊ะ"}
+                {!selectedTable ? "เลือกโต๊ะ" : 
+                 !selectedDate || !selectedTime ? "เลือกวันและเวลา" :
+                 selectedTable.seats < guests ? "โต๊ะไม่เพียงพอ" :
+                 "ยืนยันการจอง"}
               </button>
             </div>
           </div>

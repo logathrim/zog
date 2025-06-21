@@ -87,88 +87,231 @@ export const restaurants: Restaurant[] = [
   }
 ];
 
-// Table layouts for each restaurant
+// Table layouts for each restaurant - จัดเรียงแบบเหมือนจริง
 export const restaurantTables: { [key: string]: Table[] } = {
-  // Zog Downtown - Modern layout with stage focus
+  // Zog Downtown - Modern restaurant layout with stage at front
   '1': [
-    { id: '1', number: 1, seats: 2, position: { x: 25, y: 30 }, isAvailable: true, isSelected: false },
-    { id: '2', number: 2, seats: 2, position: { x: 75, y: 30 }, isAvailable: true, isSelected: false },
-    { id: '3', number: 3, seats: 4, position: { x: 20, y: 50 }, isAvailable: false, isSelected: false },
-    { id: '4', number: 4, seats: 4, position: { x: 50, y: 45 }, isAvailable: true, isSelected: false },
-    { id: '5', number: 5, seats: 4, position: { x: 80, y: 50 }, isAvailable: true, isSelected: false },
-    { id: '6', number: 6, seats: 6, position: { x: 35, y: 65 }, isAvailable: true, isSelected: false },
-    { id: '7', number: 7, seats: 6, position: { x: 65, y: 65 }, isAvailable: false, isSelected: false },
-    { id: '8', number: 8, seats: 2, position: { x: 15, y: 75 }, isAvailable: true, isSelected: false },
-    { id: '9', number: 9, seats: 2, position: { x: 85, y: 75 }, isAvailable: true, isSelected: false },
-    { id: '10', number: 10, seats: 8, position: { x: 50, y: 80 }, isAvailable: true, isSelected: false }
-  ],
-
-  // Zog Riverside - Waterfront layout
-  '2': [
+    // แถวหน้า - ใกล้เวที (โต๊ะเล็ก 2 ที่นั่ง)
     { id: '1', number: 1, seats: 2, position: { x: 15, y: 25 }, isAvailable: true, isSelected: false },
-    { id: '2', number: 2, seats: 2, position: { x: 35, y: 25 }, isAvailable: true, isSelected: false },
-    { id: '3', number: 3, seats: 2, position: { x: 55, y: 25 }, isAvailable: false, isSelected: false },
-    { id: '4', number: 4, seats: 2, position: { x: 75, y: 25 }, isAvailable: true, isSelected: false },
-    { id: '5', number: 5, seats: 4, position: { x: 25, y: 45 }, isAvailable: true, isSelected: false },
-    { id: '6', number: 6, seats: 4, position: { x: 65, y: 45 }, isAvailable: true, isSelected: false },
-    { id: '7', number: 7, seats: 6, position: { x: 45, y: 60 }, isAvailable: false, isSelected: false },
-    { id: '8', number: 8, seats: 4, position: { x: 20, y: 75 }, isAvailable: true, isSelected: false },
-    { id: '9', number: 9, seats: 4, position: { x: 70, y: 75 }, isAvailable: true, isSelected: false }
+    { id: '2', number: 2, seats: 2, position: { x: 25, y: 25 }, isAvailable: false, isSelected: false },
+    { id: '3', number: 3, seats: 2, position: { x: 35, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '4', number: 4, seats: 2, position: { x: 45, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 2, position: { x: 55, y: 25 }, isAvailable: false, isSelected: false },
+    { id: '6', number: 6, seats: 2, position: { x: 65, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 2, position: { x: 75, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '8', number: 8, seats: 2, position: { x: 85, y: 25 }, isAvailable: false, isSelected: false },
+
+    // แถวที่ 2 (โต๊ะ 4 ที่นั่ง)
+    { id: '9', number: 9, seats: 4, position: { x: 15, y: 40 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 4, position: { x: 30, y: 40 }, isAvailable: true, isSelected: false },
+    { id: '11', number: 11, seats: 4, position: { x: 45, y: 40 }, isAvailable: false, isSelected: false },
+    { id: '12', number: 12, seats: 4, position: { x: 60, y: 40 }, isAvailable: true, isSelected: false },
+    { id: '13', number: 13, seats: 4, position: { x: 75, y: 40 }, isAvailable: true, isSelected: false },
+
+    // แถวที่ 3 (โต๊ะ 4 ที่นั่ง)
+    { id: '14', number: 14, seats: 4, position: { x: 15, y: 55 }, isAvailable: false, isSelected: false },
+    { id: '15', number: 15, seats: 4, position: { x: 30, y: 55 }, isAvailable: true, isSelected: false },
+    { id: '16', number: 16, seats: 4, position: { x: 45, y: 55 }, isAvailable: true, isSelected: false },
+    { id: '17', number: 17, seats: 4, position: { x: 60, y: 55 }, isAvailable: false, isSelected: false },
+    { id: '18', number: 18, seats: 4, position: { x: 75, y: 55 }, isAvailable: true, isSelected: false },
+
+    // แถวหลัง (โต๊ะใหญ่ 6-8 ที่นั่ง)
+    { id: '19', number: 19, seats: 6, position: { x: 20, y: 70 }, isAvailable: true, isSelected: false },
+    { id: '20', number: 20, seats: 6, position: { x: 40, y: 70 }, isAvailable: true, isSelected: false },
+    { id: '21', number: 21, seats: 6, position: { x: 60, y: 70 }, isAvailable: false, isSelected: false },
+    { id: '22', number: 22, seats: 8, position: { x: 80, y: 70 }, isAvailable: true, isSelected: false },
+
+    // แถวสุดท้าย
+    { id: '23', number: 23, seats: 6, position: { x: 25, y: 85 }, isAvailable: true, isSelected: false },
+    { id: '24', number: 24, seats: 8, position: { x: 50, y: 85 }, isAvailable: false, isSelected: false },
+    { id: '25', number: 25, seats: 6, position: { x: 75, y: 85 }, isAvailable: true, isSelected: false }
   ],
 
-  // Zog Rooftop - Circular layout around pool
+  // Zog Riverside - Waterfront restaurant layout
+  '2': [
+    // แถวริมน้ำ (วิวสวยที่สุด)
+    { id: '1', number: 1, seats: 2, position: { x: 10, y: 20 }, isAvailable: false, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 20, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '3', number: 3, seats: 2, position: { x: 30, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '4', number: 4, seats: 2, position: { x: 40, y: 20 }, isAvailable: false, isSelected: false },
+    { id: '5', number: 5, seats: 2, position: { x: 50, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '6', number: 6, seats: 2, position: { x: 60, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 2, position: { x: 70, y: 20 }, isAvailable: false, isSelected: false },
+    { id: '8', number: 8, seats: 2, position: { x: 80, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '9', number: 9, seats: 2, position: { x: 90, y: 20 }, isAvailable: true, isSelected: false },
+
+    // แถวที่ 2
+    { id: '10', number: 10, seats: 4, position: { x: 15, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '11', number: 11, seats: 4, position: { x: 30, y: 35 }, isAvailable: false, isSelected: false },
+    { id: '12', number: 12, seats: 4, position: { x: 45, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '13', number: 13, seats: 4, position: { x: 60, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '14', number: 14, seats: 4, position: { x: 75, y: 35 }, isAvailable: false, isSelected: false },
+
+    // แถวที่ 3
+    { id: '15', number: 15, seats: 4, position: { x: 15, y: 50 }, isAvailable: true, isSelected: false },
+    { id: '16', number: 16, seats: 4, position: { x: 30, y: 50 }, isAvailable: true, isSelected: false },
+    { id: '17', number: 17, seats: 4, position: { x: 45, y: 50 }, isAvailable: false, isSelected: false },
+    { id: '18', number: 18, seats: 4, position: { x: 60, y: 50 }, isAvailable: true, isSelected: false },
+    { id: '19', number: 19, seats: 4, position: { x: 75, y: 50 }, isAvailable: true, isSelected: false },
+
+    // แถวหลัง
+    { id: '20', number: 20, seats: 6, position: { x: 20, y: 65 }, isAvailable: false, isSelected: false },
+    { id: '21', number: 21, seats: 6, position: { x: 40, y: 65 }, isAvailable: true, isSelected: false },
+    { id: '22', number: 22, seats: 6, position: { x: 60, y: 65 }, isAvailable: true, isSelected: false },
+    { id: '23', number: 23, seats: 8, position: { x: 80, y: 65 }, isAvailable: false, isSelected: false },
+
+    // แถวสุดท้าย
+    { id: '24', number: 24, seats: 8, position: { x: 30, y: 80 }, isAvailable: true, isSelected: false },
+    { id: '25', number: 25, seats: 8, position: { x: 60, y: 80 }, isAvailable: true, isSelected: false }
+  ],
+
+  // Zog Rooftop - Rooftop bar layout
   '3': [
-    { id: '1', number: 1, seats: 2, position: { x: 30, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '2', number: 2, seats: 2, position: { x: 70, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '3', number: 3, seats: 4, position: { x: 15, y: 35 }, isAvailable: false, isSelected: false },
-    { id: '4', number: 4, seats: 4, position: { x: 85, y: 35 }, isAvailable: true, isSelected: false },
-    { id: '5', number: 5, seats: 2, position: { x: 20, y: 55 }, isAvailable: true, isSelected: false },
-    { id: '6', number: 6, seats: 2, position: { x: 80, y: 55 }, isAvailable: true, isSelected: false },
-    { id: '7', number: 7, seats: 6, position: { x: 15, y: 75 }, isAvailable: true, isSelected: false },
-    { id: '8', number: 8, seats: 6, position: { x: 85, y: 75 }, isAvailable: false, isSelected: false },
-    { id: '9', number: 9, seats: 4, position: { x: 30, y: 85 }, isAvailable: true, isSelected: false },
-    { id: '10', number: 10, seats: 4, position: { x: 70, y: 85 }, isAvailable: true, isSelected: false },
-    { id: '11', number: 11, seats: 8, position: { x: 50, y: 90 }, isAvailable: true, isSelected: false }
+    // บาร์เคาน์เตอร์ (แถวหน้า)
+    { id: '1', number: 1, seats: 2, position: { x: 15, y: 15 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 25, y: 15 }, isAvailable: false, isSelected: false },
+    { id: '3', number: 3, seats: 2, position: { x: 35, y: 15 }, isAvailable: true, isSelected: false },
+    { id: '4', number: 4, seats: 2, position: { x: 45, y: 15 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 2, position: { x: 55, y: 15 }, isAvailable: false, isSelected: false },
+    { id: '6', number: 6, seats: 2, position: { x: 65, y: 15 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 2, position: { x: 75, y: 15 }, isAvailable: true, isSelected: false },
+    { id: '8', number: 8, seats: 2, position: { x: 85, y: 15 }, isAvailable: false, isSelected: false },
+
+    // พื้นที่รอบพูล - แถวซ้าย
+    { id: '9', number: 9, seats: 4, position: { x: 10, y: 30 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 4, position: { x: 10, y: 45 }, isAvailable: false, isSelected: false },
+    { id: '11', number: 11, seats: 4, position: { x: 10, y: 60 }, isAvailable: true, isSelected: false },
+    { id: '12', number: 12, seats: 6, position: { x: 10, y: 75 }, isAvailable: true, isSelected: false },
+
+    // พื้นที่รอบพูล - แถวขวา
+    { id: '13', number: 13, seats: 4, position: { x: 90, y: 30 }, isAvailable: false, isSelected: false },
+    { id: '14', number: 14, seats: 4, position: { x: 90, y: 45 }, isAvailable: true, isSelected: false },
+    { id: '15', number: 15, seats: 4, position: { x: 90, y: 60 }, isAvailable: true, isSelected: false },
+    { id: '16', number: 16, seats: 6, position: { x: 90, y: 75 }, isAvailable: false, isSelected: false },
+
+    // พื้นที่กลาง - รอบพูล
+    { id: '17', number: 17, seats: 4, position: { x: 25, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '18', number: 18, seats: 4, position: { x: 40, y: 30 }, isAvailable: true, isSelected: false },
+    { id: '19', number: 19, seats: 4, position: { x: 60, y: 30 }, isAvailable: false, isSelected: false },
+    { id: '20', number: 20, seats: 4, position: { x: 75, y: 35 }, isAvailable: true, isSelected: false },
+
+    { id: '21', number: 21, seats: 4, position: { x: 25, y: 65 }, isAvailable: false, isSelected: false },
+    { id: '22', number: 22, seats: 4, position: { x: 40, y: 70 }, isAvailable: true, isSelected: false },
+    { id: '23', number: 23, seats: 4, position: { x: 60, y: 70 }, isAvailable: true, isSelected: false },
+    { id: '24', number: 24, seats: 4, position: { x: 75, y: 65 }, isAvailable: false, isSelected: false },
+
+    // VIP Section - แถวหลัง
+    { id: '25', number: 25, seats: 8, position: { x: 20, y: 85 }, isAvailable: true, isSelected: false },
+    { id: '26', number: 26, seats: 8, position: { x: 40, y: 90 }, isAvailable: false, isSelected: false },
+    { id: '27', number: 27, seats: 8, position: { x: 60, y: 90 }, isAvailable: true, isSelected: false },
+    { id: '28', number: 28, seats: 8, position: { x: 80, y: 85 }, isAvailable: true, isSelected: false }
   ],
 
-  // Zog Garden - Scattered among trees
+  // Zog Garden - Garden restaurant layout
   '4': [
-    { id: '1', number: 1, seats: 2, position: { x: 20, y: 25 }, isAvailable: true, isSelected: false },
-    { id: '2', number: 2, seats: 4, position: { x: 45, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '3', number: 3, seats: 2, position: { x: 75, y: 30 }, isAvailable: false, isSelected: false },
-    { id: '4', number: 4, seats: 6, position: { x: 25, y: 45 }, isAvailable: true, isSelected: false },
-    { id: '5', number: 5, seats: 4, position: { x: 60, y: 40 }, isAvailable: true, isSelected: false },
-    { id: '6', number: 6, seats: 2, position: { x: 85, y: 55 }, isAvailable: true, isSelected: false },
-    { id: '7', number: 7, seats: 4, position: { x: 15, y: 65 }, isAvailable: false, isSelected: false },
-    { id: '8', number: 8, seats: 6, position: { x: 50, y: 70 }, isAvailable: true, isSelected: false },
-    { id: '9', number: 9, seats: 2, position: { x: 80, y: 80 }, isAvailable: true, isSelected: false },
-    { id: '10', number: 10, seats: 8, position: { x: 35, y: 85 }, isAvailable: true, isSelected: false }
+    // แถวหน้า - ใต้ต้นไม้
+    { id: '1', number: 1, seats: 2, position: { x: 15, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 25, y: 25 }, isAvailable: false, isSelected: false },
+    { id: '3', number: 3, seats: 2, position: { x: 35, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '4', number: 4, seats: 2, position: { x: 50, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 2, position: { x: 65, y: 25 }, isAvailable: false, isSelected: false },
+    { id: '6', number: 6, seats: 2, position: { x: 75, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 2, position: { x: 85, y: 25 }, isAvailable: true, isSelected: false },
+
+    // แถวที่ 2
+    { id: '8', number: 8, seats: 4, position: { x: 15, y: 40 }, isAvailable: false, isSelected: false },
+    { id: '9', number: 9, seats: 4, position: { x: 30, y: 40 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 4, position: { x: 45, y: 40 }, isAvailable: true, isSelected: false },
+    { id: '11', number: 11, seats: 4, position: { x: 60, y: 40 }, isAvailable: false, isSelected: false },
+    { id: '12', number: 12, seats: 4, position: { x: 75, y: 40 }, isAvailable: true, isSelected: false },
+
+    // แถวที่ 3
+    { id: '13', number: 13, seats: 4, position: { x: 15, y: 55 }, isAvailable: true, isSelected: false },
+    { id: '14', number: 14, seats: 4, position: { x: 30, y: 55 }, isAvailable: false, isSelected: false },
+    { id: '15', number: 15, seats: 4, position: { x: 45, y: 55 }, isAvailable: true, isSelected: false },
+    { id: '16', number: 16, seats: 4, position: { x: 60, y: 55 }, isAvailable: true, isSelected: false },
+    { id: '17', number: 17, seats: 4, position: { x: 75, y: 55 }, isAvailable: false, isSelected: false },
+
+    // แถวหลัง - โต๊ะใหญ่
+    { id: '18', number: 18, seats: 6, position: { x: 20, y: 70 }, isAvailable: true, isSelected: false },
+    { id: '19', number: 19, seats: 6, position: { x: 40, y: 70 }, isAvailable: true, isSelected: false },
+    { id: '20', number: 20, seats: 6, position: { x: 60, y: 70 }, isAvailable: false, isSelected: false },
+    { id: '21', number: 21, seats: 8, position: { x: 80, y: 70 }, isAvailable: true, isSelected: false },
+
+    // แถวสุดท้าย
+    { id: '22', number: 22, seats: 8, position: { x: 25, y: 85 }, isAvailable: false, isSelected: false },
+    { id: '23', number: 23, seats: 8, position: { x: 50, y: 85 }, isAvailable: true, isSelected: false },
+    { id: '24', number: 24, seats: 6, position: { x: 75, y: 85 }, isAvailable: true, isSelected: false }
   ],
 
-  // Zog Underground - Club layout with dance floor
+  // Zog Underground - Nightclub layout
   '5': [
-    { id: '1', number: 1, seats: 4, position: { x: 15, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '2', number: 2, seats: 4, position: { x: 85, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '3', number: 3, seats: 6, position: { x: 10, y: 35 }, isAvailable: false, isSelected: false },
-    { id: '4', number: 4, seats: 6, position: { x: 90, y: 35 }, isAvailable: true, isSelected: false },
-    { id: '5', number: 5, seats: 8, position: { x: 15, y: 55 }, isAvailable: true, isSelected: false },
-    { id: '6', number: 6, seats: 8, position: { x: 85, y: 55 }, isAvailable: true, isSelected: false },
-    { id: '7', number: 7, seats: 4, position: { x: 10, y: 75 }, isAvailable: false, isSelected: false },
-    { id: '8', number: 8, seats: 4, position: { x: 90, y: 75 }, isAvailable: true, isSelected: false },
-    { id: '9', number: 9, seats: 6, position: { x: 25, y: 85 }, isAvailable: true, isSelected: false },
-    { id: '10', number: 10, seats: 6, position: { x: 75, y: 85 }, isAvailable: true, isSelected: false }
+    // VIP Booths - ด้านซ้าย
+    { id: '1', number: 1, seats: 6, position: { x: 10, y: 20 }, isAvailable: false, isSelected: false },
+    { id: '2', number: 2, seats: 6, position: { x: 10, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '3', number: 3, seats: 8, position: { x: 10, y: 50 }, isAvailable: true, isSelected: false },
+    { id: '4', number: 4, seats: 8, position: { x: 10, y: 65 }, isAvailable: false, isSelected: false },
+    { id: '5', number: 5, seats: 6, position: { x: 10, y: 80 }, isAvailable: true, isSelected: false },
+
+    // VIP Booths - ด้านขวา
+    { id: '6', number: 6, seats: 6, position: { x: 90, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 6, position: { x: 90, y: 35 }, isAvailable: false, isSelected: false },
+    { id: '8', number: 8, seats: 8, position: { x: 90, y: 50 }, isAvailable: true, isSelected: false },
+    { id: '9', number: 9, seats: 8, position: { x: 90, y: 65 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 6, position: { x: 90, y: 80 }, isAvailable: false, isSelected: false },
+
+    // รอบ Dance Floor - แถวบน
+    { id: '11', number: 11, seats: 4, position: { x: 25, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '12', number: 12, seats: 4, position: { x: 35, y: 25 }, isAvailable: false, isSelected: false },
+    { id: '13', number: 13, seats: 4, position: { x: 45, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '14', number: 14, seats: 4, position: { x: 55, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '15', number: 15, seats: 4, position: { x: 65, y: 25 }, isAvailable: false, isSelected: false },
+    { id: '16', number: 16, seats: 4, position: { x: 75, y: 25 }, isAvailable: true, isSelected: false },
+
+    // รอบ Dance Floor - แถวล่าง
+    { id: '17', number: 17, seats: 4, position: { x: 25, y: 75 }, isAvailable: false, isSelected: false },
+    { id: '18', number: 18, seats: 4, position: { x: 35, y: 75 }, isAvailable: true, isSelected: false },
+    { id: '19', number: 19, seats: 4, position: { x: 45, y: 75 }, isAvailable: true, isSelected: false },
+    { id: '20', number: 20, seats: 4, position: { x: 55, y: 75 }, isAvailable: false, isSelected: false },
+    { id: '21', number: 21, seats: 4, position: { x: 65, y: 75 }, isAvailable: true, isSelected: false },
+    { id: '22', number: 22, seats: 4, position: { x: 75, y: 75 }, isAvailable: true, isSelected: false },
+
+    // Premium Tables - แถวหลัง
+    { id: '23', number: 23, seats: 8, position: { x: 30, y: 90 }, isAvailable: false, isSelected: false },
+    { id: '24', number: 24, seats: 8, position: { x: 50, y: 90 }, isAvailable: true, isSelected: false },
+    { id: '25', number: 25, seats: 8, position: { x: 70, y: 90 }, isAvailable: true, isSelected: false }
   ],
 
   // Zog Classic - Traditional bar layout
   '6': [
-    { id: '1', number: 1, seats: 2, position: { x: 25, y: 35 }, isAvailable: true, isSelected: false },
-    { id: '2', number: 2, seats: 2, position: { x: 75, y: 35 }, isAvailable: true, isSelected: false },
-    { id: '3', number: 3, seats: 4, position: { x: 35, y: 50 }, isAvailable: false, isSelected: false },
-    { id: '4', number: 4, seats: 4, position: { x: 65, y: 50 }, isAvailable: true, isSelected: false },
-    { id: '5', number: 5, seats: 6, position: { x: 50, y: 65 }, isAvailable: true, isSelected: false },
-    { id: '6', number: 6, seats: 2, position: { x: 20, y: 75 }, isAvailable: true, isSelected: false },
-    { id: '7', number: 7, seats: 2, position: { x: 80, y: 75 }, isAvailable: false, isSelected: false },
-    { id: '8', number: 8, seats: 4, position: { x: 50, y: 85 }, isAvailable: true, isSelected: false }
+    // บาร์เคาน์เตอร์
+    { id: '1', number: 1, seats: 2, position: { x: 20, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 30, y: 20 }, isAvailable: false, isSelected: false },
+    { id: '3', number: 3, seats: 2, position: { x: 40, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '4', number: 4, seats: 2, position: { x: 50, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 2, position: { x: 60, y: 20 }, isAvailable: false, isSelected: false },
+    { id: '6', number: 6, seats: 2, position: { x: 70, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 2, position: { x: 80, y: 20 }, isAvailable: true, isSelected: false },
+
+    // แถวกลาง
+    { id: '8', number: 8, seats: 4, position: { x: 20, y: 40 }, isAvailable: false, isSelected: false },
+    { id: '9', number: 9, seats: 4, position: { x: 35, y: 40 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 4, position: { x: 50, y: 40 }, isAvailable: true, isSelected: false },
+    { id: '11', number: 11, seats: 4, position: { x: 65, y: 40 }, isAvailable: false, isSelected: false },
+    { id: '12', number: 12, seats: 4, position: { x: 80, y: 40 }, isAvailable: true, isSelected: false },
+
+    // แถวหลัง
+    { id: '13', number: 13, seats: 4, position: { x: 20, y: 60 }, isAvailable: true, isSelected: false },
+    { id: '14', number: 14, seats: 4, position: { x: 35, y: 60 }, isAvailable: false, isSelected: false },
+    { id: '15', number: 15, seats: 4, position: { x: 50, y: 60 }, isAvailable: true, isSelected: false },
+    { id: '16', number: 16, seats: 4, position: { x: 65, y: 60 }, isAvailable: true, isSelected: false },
+    { id: '17', number: 17, seats: 4, position: { x: 80, y: 60 }, isAvailable: false, isSelected: false },
+
+    // โต๊ะใหญ่ด้านหลัง
+    { id: '18', number: 18, seats: 6, position: { x: 25, y: 80 }, isAvailable: true, isSelected: false },
+    { id: '19', number: 19, seats: 6, position: { x: 45, y: 80 }, isAvailable: false, isSelected: false },
+    { id: '20', number: 20, seats: 6, position: { x: 65, y: 80 }, isAvailable: true, isSelected: false },
+    { id: '21', number: 21, seats: 8, position: { x: 85, y: 80 }, isAvailable: true, isSelected: false }
   ]
 };
 
