@@ -87,6 +87,91 @@ export const restaurants: Restaurant[] = [
   }
 ];
 
+// Table layouts for each restaurant
+export const restaurantTables: { [key: string]: Table[] } = {
+  // Zog Downtown - Modern layout with stage focus
+  '1': [
+    { id: '1', number: 1, seats: 2, position: { x: 25, y: 30 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 75, y: 30 }, isAvailable: true, isSelected: false },
+    { id: '3', number: 3, seats: 4, position: { x: 20, y: 50 }, isAvailable: false, isSelected: false },
+    { id: '4', number: 4, seats: 4, position: { x: 50, y: 45 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 4, position: { x: 80, y: 50 }, isAvailable: true, isSelected: false },
+    { id: '6', number: 6, seats: 6, position: { x: 35, y: 65 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 6, position: { x: 65, y: 65 }, isAvailable: false, isSelected: false },
+    { id: '8', number: 8, seats: 2, position: { x: 15, y: 75 }, isAvailable: true, isSelected: false },
+    { id: '9', number: 9, seats: 2, position: { x: 85, y: 75 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 8, position: { x: 50, y: 80 }, isAvailable: true, isSelected: false }
+  ],
+
+  // Zog Riverside - Waterfront layout
+  '2': [
+    { id: '1', number: 1, seats: 2, position: { x: 15, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 35, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '3', number: 3, seats: 2, position: { x: 55, y: 25 }, isAvailable: false, isSelected: false },
+    { id: '4', number: 4, seats: 2, position: { x: 75, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 4, position: { x: 25, y: 45 }, isAvailable: true, isSelected: false },
+    { id: '6', number: 6, seats: 4, position: { x: 65, y: 45 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 6, position: { x: 45, y: 60 }, isAvailable: false, isSelected: false },
+    { id: '8', number: 8, seats: 4, position: { x: 20, y: 75 }, isAvailable: true, isSelected: false },
+    { id: '9', number: 9, seats: 4, position: { x: 70, y: 75 }, isAvailable: true, isSelected: false }
+  ],
+
+  // Zog Rooftop - Circular layout around pool
+  '3': [
+    { id: '1', number: 1, seats: 2, position: { x: 30, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 70, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '3', number: 3, seats: 4, position: { x: 15, y: 35 }, isAvailable: false, isSelected: false },
+    { id: '4', number: 4, seats: 4, position: { x: 85, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 2, position: { x: 20, y: 55 }, isAvailable: true, isSelected: false },
+    { id: '6', number: 6, seats: 2, position: { x: 80, y: 55 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 6, position: { x: 15, y: 75 }, isAvailable: true, isSelected: false },
+    { id: '8', number: 8, seats: 6, position: { x: 85, y: 75 }, isAvailable: false, isSelected: false },
+    { id: '9', number: 9, seats: 4, position: { x: 30, y: 85 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 4, position: { x: 70, y: 85 }, isAvailable: true, isSelected: false },
+    { id: '11', number: 11, seats: 8, position: { x: 50, y: 90 }, isAvailable: true, isSelected: false }
+  ],
+
+  // Zog Garden - Scattered among trees
+  '4': [
+    { id: '1', number: 1, seats: 2, position: { x: 20, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 4, position: { x: 45, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '3', number: 3, seats: 2, position: { x: 75, y: 30 }, isAvailable: false, isSelected: false },
+    { id: '4', number: 4, seats: 6, position: { x: 25, y: 45 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 4, position: { x: 60, y: 40 }, isAvailable: true, isSelected: false },
+    { id: '6', number: 6, seats: 2, position: { x: 85, y: 55 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 4, position: { x: 15, y: 65 }, isAvailable: false, isSelected: false },
+    { id: '8', number: 8, seats: 6, position: { x: 50, y: 70 }, isAvailable: true, isSelected: false },
+    { id: '9', number: 9, seats: 2, position: { x: 80, y: 80 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 8, position: { x: 35, y: 85 }, isAvailable: true, isSelected: false }
+  ],
+
+  // Zog Underground - Club layout with dance floor
+  '5': [
+    { id: '1', number: 1, seats: 4, position: { x: 15, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 4, position: { x: 85, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '3', number: 3, seats: 6, position: { x: 10, y: 35 }, isAvailable: false, isSelected: false },
+    { id: '4', number: 4, seats: 6, position: { x: 90, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 8, position: { x: 15, y: 55 }, isAvailable: true, isSelected: false },
+    { id: '6', number: 6, seats: 8, position: { x: 85, y: 55 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 4, position: { x: 10, y: 75 }, isAvailable: false, isSelected: false },
+    { id: '8', number: 8, seats: 4, position: { x: 90, y: 75 }, isAvailable: true, isSelected: false },
+    { id: '9', number: 9, seats: 6, position: { x: 25, y: 85 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 6, position: { x: 75, y: 85 }, isAvailable: true, isSelected: false }
+  ],
+
+  // Zog Classic - Traditional bar layout
+  '6': [
+    { id: '1', number: 1, seats: 2, position: { x: 25, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 75, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '3', number: 3, seats: 4, position: { x: 35, y: 50 }, isAvailable: false, isSelected: false },
+    { id: '4', number: 4, seats: 4, position: { x: 65, y: 50 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 6, position: { x: 50, y: 65 }, isAvailable: true, isSelected: false },
+    { id: '6', number: 6, seats: 2, position: { x: 20, y: 75 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 2, position: { x: 80, y: 75 }, isAvailable: false, isSelected: false },
+    { id: '8', number: 8, seats: 4, position: { x: 50, y: 85 }, isAvailable: true, isSelected: false }
+  ]
+};
+
 export const bands: Band[] = [
   {
     id: '1',
@@ -126,16 +211,8 @@ export const bands: Band[] = [
   }
 ];
 
-export const tables: Table[] = [
-  { id: '1', number: 1, seats: 2, position: { x: 30, y: 25 }, isAvailable: true, isSelected: false },
-  { id: '2', number: 2, seats: 4, position: { x: 70, y: 25 }, isAvailable: true, isSelected: false },
-  { id: '3', number: 3, seats: 2, position: { x: 30, y: 55 }, isAvailable: false, isSelected: false },
-  { id: '4', number: 4, seats: 6, position: { x: 70, y: 55 }, isAvailable: true, isSelected: false },
-  { id: '5', number: 5, seats: 4, position: { x: 30, y: 85 }, isAvailable: true, isSelected: false },
-  { id: '6', number: 6, seats: 2, position: { x: 70, y: 85 }, isAvailable: true, isSelected: false },
-  { id: '7', number: 7, seats: 8, position: { x: 50, y: 40 }, isAvailable: true, isSelected: false },
-  { id: '8', number: 8, seats: 4, position: { x: 50, y: 70 }, isAvailable: false, isSelected: false }
-];
+// Keep the original tables for backward compatibility
+export const tables: Table[] = restaurantTables['1'];
 
 export const promotions: Promotion[] = [
   {

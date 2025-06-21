@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Calendar, Clock, Users, Phone, Mail, User, Music, ArrowLeft, MapPin, Star } from "lucide-react";
 import { Table, Reservation, Restaurant } from "../types";
-import { tables as initialTables } from "../data/mockData";
+import { restaurantTables } from "../data/mockData";
 
 interface TableReservationProps {
   restaurant: Restaurant | null;
@@ -9,7 +9,9 @@ interface TableReservationProps {
 }
 
 export default function TableReservation({ restaurant, onBackToSelection }: TableReservationProps) {
-  const [tables, setTables] = useState<Table[]>(initialTables);
+  const [tables, setTables] = useState<Table[]>(
+    restaurant ? restaurantTables[restaurant.id] || [] : []
+  );
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [guests, setGuests] = useState(2);
