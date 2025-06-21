@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { Calendar, Clock, Users, Phone, Mail, User, Music } from "lucide-react";
-import { Table, Reservation } from "../types";
+import { Calendar, Clock, Users, Phone, Mail, User, Music, ArrowLeft, MapPin, Star } from "lucide-react";
+import { Table, Reservation, Restaurant } from "../types";
 import { tables as initialTables } from "../data/mockData";
 
-export default function TableReservation() {
+interface TableReservationProps {
+  restaurant: Restaurant | null;
+  onBackToSelection: () => void;
+}
+
+export default function TableReservation({ restaurant, onBackToSelection }: TableReservationProps) {
   const [tables, setTables] = useState<Table[]>(initialTables);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
@@ -31,7 +36,7 @@ export default function TableReservation() {
   const handleReservation = () => {
     if (selectedTable && selectedDate && selectedTime && reservationForm.name) {
       alert(
-        `การจองสำเร็จ โต๊ะ ${selectedTable.number} วันที่ ${selectedDate} เวลา ${selectedTime}`
+        `การจองสำเร็จ โต๊ะ ${selectedTable.number} ที่ ${restaurant?.name} วันที่ ${selectedDate} เวลา ${selectedTime}`
       );
       setShowForm(false);
       setTables(
@@ -46,20 +51,40 @@ export default function TableReservation() {
     }
   };
 
+  if (!restaurant) return null;
+
   return (
     <div className="min-h-screen">
       <div className="bg-gradient-to-r from-purple-900 via-purple-800 to-indigo-900 pt-8 pb-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-3 mb-4">
-              <div className="bg-gradient-to-br from-amber-400 to-orange-500 p-3 rounded-xl shadow-lg">
-                <Music className="h-8 w-8 text-white" />
+          <div className="flex items-center mb-4">
+            <button
+              onClick={onBackToSelection}
+              className="mr-4 p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-200"
+            >
+              <ArrowLeft className="h-5 w-5 text-white" />
+            </button>
+            <div className="flex-1">
+              <div className="flex items-center space-x-3 mb-2">
+                <div className="bg-gradient-to-br from-amber-400 to-orange-500 p-3 rounded-xl shadow-lg">
+                  <Music className="h-8 w-8 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-3xl font-bold text-white tracking-wide">
+                    {restaurant.name}
+                  </h1>
+                  <div className="flex items-center text-purple-200 text-sm">
+                    <MapPin className="h-4 w-4 mr-1" />
+                    <span>{restaurant.location}</span>
+                    <div className="flex items-center ml-4">
+                      <Star className="h-4 w-4 mr-1 text-amber-400 fill-current" />
+                      <span>{restaurant.rating}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h1 className="text-3xl font-bold text-white tracking-wide">
-                Zog
-              </h1>
+              <p className="text-purple-200">{restaurant.description}</p>
             </div>
-            <p className="text-purple-200">บาร์ & เลาจน์ระดับพรีเมียม</p>
           </div>
         </div>
       </div>

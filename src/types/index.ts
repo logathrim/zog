@@ -43,3 +43,18 @@ export interface Reservation {
   phone: string;
   email: string;
 }
+
+export interface Restaurant {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  location: string;
+  rating: number;
+  priceRange: string;
+  openTime: string;
+  closeTime: string;
+  features: string[];
+  atmosphere: string;
+  capacity: number;
+}

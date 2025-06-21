@@ -1,23 +1,51 @@
 import React, { useState } from 'react';
-import { Music, Clock, Play, Calendar } from 'lucide-react';
+import { Music, Clock, Play, Calendar, ArrowLeft, MapPin, Star } from 'lucide-react';
 import { timeSlots } from '../data/mockData';
+import { Restaurant } from '../types';
 
-export default function MusicLineup() {
+interface MusicLineupProps {
+  restaurant: Restaurant | null;
+  onBackToSelection: () => void;
+}
+
+export default function MusicLineup({ restaurant, onBackToSelection }: MusicLineupProps) {
   const [selectedTimeSlot, setSelectedTimeSlot] = useState(timeSlots[0]);
+
+  if (!restaurant) return null;
 
   return (
     <div className="min-h-screen">
       {/* Header Section */}
       <div className="bg-gradient-to-r from-purple-900 via-purple-800 to-indigo-900 pt-8 pb-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-3 mb-4">
-              <div className="bg-gradient-to-br from-amber-400 to-orange-500 p-3 rounded-xl shadow-lg">
-                <Music className="h-8 w-8 text-white" />
+          <div className="flex items-center mb-4">
+            <button
+              onClick={onBackToSelection}
+              className="mr-4 p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-200"
+            >
+              <ArrowLeft className="h-5 w-5 text-white" />
+            </button>
+            <div className="flex-1">
+              <div className="flex items-center space-x-3 mb-2">
+                <div className="bg-gradient-to-br from-amber-400 to-orange-500 p-3 rounded-xl shadow-lg">
+                  <Music className="h-8 w-8 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-3xl font-bold text-white tracking-wide">
+                    {restaurant.name}
+                  </h1>
+                  <div className="flex items-center text-purple-200 text-sm">
+                    <MapPin className="h-4 w-4 mr-1" />
+                    <span>{restaurant.location}</span>
+                    <div className="flex items-center ml-4">
+                      <Star className="h-4 w-4 mr-1 text-amber-400 fill-current" />
+                      <span>{restaurant.rating}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h1 className="text-3xl font-bold text-white tracking-wide">Zog</h1>
+              <p className="text-purple-200">{restaurant.description}</p>
             </div>
-            <p className="text-purple-200">บาร์ & เลาจน์ระดับพรีเมียม</p>
           </div>
         </div>
       </div>

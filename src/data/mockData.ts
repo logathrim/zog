@@ -1,4 +1,91 @@
-import { Band, Table, Promotion, TimeSlot } from '../types';
+import { Band, Table, Promotion, TimeSlot, Restaurant } from '../types';
+
+export const restaurants: Restaurant[] = [
+  {
+    id: '1',
+    name: 'Zog Downtown',
+    description: 'สาขาใจกลางเมือง บรรยากาศหรูหราพร้อมดนตรีสดทุกคืน',
+    image: 'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800',
+    location: 'สีลม, กรุงเทพฯ',
+    rating: 4.8,
+    priceRange: '฿฿฿',
+    openTime: '17:00',
+    closeTime: '02:00',
+    features: ['ดนตรีสด', 'รูฟท็อป', 'ค็อกเทลพิเศษ', 'ที่จอดรถ'],
+    atmosphere: 'หรูหรา & โมเดิร์น',
+    capacity: 120
+  },
+  {
+    id: '2',
+    name: 'Zog Riverside',
+    description: 'วิวแม่น้ำสุดโรแมนติก เหมาะสำหรับดินเนอร์พิเศษ',
+    image: 'https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=800',
+    location: 'อาศรม, กรุงเทพฯ',
+    rating: 4.9,
+    priceRange: '฿฿฿฿',
+    openTime: '18:00',
+    closeTime: '01:00',
+    features: ['วิวแม่น้ำ', 'เทอเรส', 'ไวน์คอลเลคชัน', 'เชฟพิเศษ'],
+    atmosphere: 'โรแมนติก & เอ็กซ์คลูซีฟ',
+    capacity: 80
+  },
+  {
+    id: '3',
+    name: 'Zog Rooftop',
+    description: 'บาร์รูฟท็อปชั้น 35 วิว 360 องศาของกรุงเทพฯ',
+    image: 'https://images.pexels.com/photos/1267697/pexels-photo-1267697.jpeg?auto=compress&cs=tinysrgb&w=800',
+    location: 'สาทร, กรุงเทพฯ',
+    rating: 4.7,
+    priceRange: '฿฿฿฿',
+    openTime: '17:30',
+    closeTime: '02:00',
+    features: ['วิวพาโนรามา', 'สกายบาร์', 'DJ เซ็ต', 'อินฟินิตี้พูล'],
+    atmosphere: 'สุดหรู & ทันสมัย',
+    capacity: 150
+  },
+  {
+    id: '4',
+    name: 'Zog Garden',
+    description: 'บรรยากาศสวนสวยในใจเมือง ผ่อนคลายท่ามกลางธรรมชาติ',
+    image: 'https://images.pexels.com/photos/1449773/pexels-photo-1449773.jpeg?auto=compress&cs=tinysrgb&w=800',
+    location: 'ทองหล่อ, กรุงเทพฯ',
+    rating: 4.6,
+    priceRange: '฿฿฿',
+    openTime: '16:00',
+    closeTime: '01:00',
+    features: ['สวนสวย', 'อาหารออร์แกนิค', 'โยคะ', 'พื้นที่ส่วนตัว'],
+    atmosphere: 'ธรรมชาติ & ผ่อนคลาย',
+    capacity: 100
+  },
+  {
+    id: '5',
+    name: 'Zog Underground',
+    description: 'บาร์ใต้ดินสุดเท่ ดนตรีอิเล็กทรอนิกส์และค็อกเทลสุดแนว',
+    image: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=800',
+    location: 'เอกมัย, กรุงเทพฯ',
+    rating: 4.5,
+    priceRange: '฿฿฿',
+    openTime: '19:00',
+    closeTime: '03:00',
+    features: ['ดนตรีอิเล็กทรอนิกส์', 'แสงไฟพิเศษ', 'เดนซ์ฟลอร์', 'VIP บูธ'],
+    atmosphere: 'ไนท์คลับ & เอ็นเนอร์เจติก',
+    capacity: 200
+  },
+  {
+    id: '6',
+    name: 'Zog Classic',
+    description: 'บาร์คลาสสิกสไตล์วินเทจ เหล้าเก่าแก่และบรรยากาศอบอุ่น',
+    image: 'https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800',
+    location: 'ราชเทวี, กรุงเทพฯ',
+    rating: 4.4,
+    priceRange: '฿฿',
+    openTime: '17:00',
+    closeTime: '01:00',
+    features: ['วิสกี้คอลเลคชัน', 'เฟอร์นิเจอร์วินเทจ', 'ซิการ์', 'บิลเลียด'],
+    atmosphere: 'คลาสสิก & อบอุ่น',
+    capacity: 60
+  }
+];
 
 export const bands: Band[] = [
   {
