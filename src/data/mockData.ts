@@ -87,71 +87,88 @@ export const restaurants: Restaurant[] = [
   }
 ];
 
-// Table layouts - คำนวณตำแหน่งให้กระจายตัวดีและไม่ซ้อนกัน
+// Table layouts - แต่ละร้านมี concept ชัดเจน
 export const restaurantTables: { [key: string]: Table[] } = {
-  // Zog Downtown - กระจายตัวจากหน้าไปหลัง
+  // 🎭 Zog Downtown - CONCEPT: Theater Style (โรงละครสไตล์)
+  // จัดเป็นแถวโค้งหันหน้าเข้าหาเวที เหมือนโรงละคร
   '1': [
-    // แถวหน้าสุด - ใกล้เวที (y: 25) - โต๊ะเล็ก 2 ที่นั่ง
-    { id: '1', number: 1, seats: 2, position: { x: 15, y: 25 }, isAvailable: true, isSelected: false },
-    { id: '2', number: 2, seats: 2, position: { x: 30, y: 25 }, isAvailable: false, isSelected: false },
-    { id: '3', number: 3, seats: 2, position: { x: 45, y: 25 }, isAvailable: true, isSelected: false },
-    { id: '4', number: 4, seats: 2, position: { x: 60, y: 25 }, isAvailable: true, isSelected: false },
-    { id: '5', number: 5, seats: 2, position: { x: 75, y: 25 }, isAvailable: false, isSelected: false },
+    // แถวหน้าสุด - โค้งเล็ก (Premium Front Row)
+    { id: '1', number: 1, seats: 2, position: { x: 35, y: 20 }, isAvailable: false, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 45, y: 18 }, isAvailable: true, isSelected: false },
+    { id: '3', number: 3, seats: 2, position: { x: 55, y: 18 }, isAvailable: true, isSelected: false },
+    { id: '4', number: 4, seats: 2, position: { x: 65, y: 20 }, isAvailable: false, isSelected: false },
 
-    // แถวที่ 2 (y: 40) - โต๊ะ 4 ที่นั่ง
-    { id: '6', number: 6, seats: 4, position: { x: 20, y: 40 }, isAvailable: true, isSelected: false },
-    { id: '7', number: 7, seats: 4, position: { x: 40, y: 40 }, isAvailable: true, isSelected: false },
-    { id: '8', number: 8, seats: 4, position: { x: 60, y: 40 }, isAvailable: false, isSelected: false },
-    { id: '9', number: 9, seats: 4, position: { x: 80, y: 40 }, isAvailable: true, isSelected: false },
+    // แถวที่ 2 - โค้งกว้างขึ้น
+    { id: '5', number: 5, seats: 4, position: { x: 25, y: 32 }, isAvailable: true, isSelected: false },
+    { id: '6', number: 6, seats: 4, position: { x: 38, y: 30 }, isAvailable: false, isSelected: false },
+    { id: '7', number: 7, seats: 4, position: { x: 50, y: 29 }, isAvailable: true, isSelected: false },
+    { id: '8', number: 8, seats: 4, position: { x: 62, y: 30 }, isAvailable: true, isSelected: false },
+    { id: '9', number: 9, seats: 4, position: { x: 75, y: 32 }, isAvailable: false, isSelected: false },
 
-    // แถวที่ 3 (y: 55) - โต๊ะ 4 ที่นั่ง
-    { id: '10', number: 10, seats: 4, position: { x: 15, y: 55 }, isAvailable: false, isSelected: false },
-    { id: '11', number: 11, seats: 4, position: { x: 35, y: 55 }, isAvailable: true, isSelected: false },
-    { id: '12', number: 12, seats: 4, position: { x: 55, y: 55 }, isAvailable: true, isSelected: false },
-    { id: '13', number: 13, seats: 4, position: { x: 75, y: 55 }, isAvailable: false, isSelected: false },
+    // แถวที่ 3 - โค้งกว้างสุด
+    { id: '10', number: 10, seats: 4, position: { x: 18, y: 45 }, isAvailable: true, isSelected: false },
+    { id: '11', number: 11, seats: 4, position: { x: 32, y: 42 }, isAvailable: true, isSelected: false },
+    { id: '12', number: 12, seats: 4, position: { x: 50, y: 41 }, isAvailable: false, isSelected: false },
+    { id: '13', number: 13, seats: 4, position: { x: 68, y: 42 }, isAvailable: true, isSelected: false },
+    { id: '14', number: 14, seats: 4, position: { x: 82, y: 45 }, isAvailable: false, isSelected: false },
 
-    // แถวที่ 4 (y: 70) - โต๊ะใหญ่ 6 ที่นั่ง
-    { id: '14', number: 14, seats: 6, position: { x: 25, y: 70 }, isAvailable: true, isSelected: false },
-    { id: '15', number: 15, seats: 6, position: { x: 50, y: 70 }, isAvailable: true, isSelected: false },
-    { id: '16', number: 16, seats: 6, position: { x: 75, y: 70 }, isAvailable: false, isSelected: false },
+    // แถวที่ 4 - โต๊ะใหญ่
+    { id: '15', number: 15, seats: 6, position: { x: 20, y: 58 }, isAvailable: true, isSelected: false },
+    { id: '16', number: 16, seats: 6, position: { x: 40, y: 55 }, isAvailable: false, isSelected: false },
+    { id: '17', number: 17, seats: 6, position: { x: 60, y: 55 }, isAvailable: true, isSelected: false },
+    { id: '18', number: 18, seats: 6, position: { x: 80, y: 58 }, isAvailable: true, isSelected: false },
 
-    // แถวหลังสุด (y: 85) - โต๊ะใหญ่ 8 ที่นั่ง
-    { id: '17', number: 17, seats: 8, position: { x: 30, y: 85 }, isAvailable: true, isSelected: false },
-    { id: '18', number: 18, seats: 8, position: { x: 70, y: 85 }, isAvailable: false, isSelected: false }
+    // แถวหลังสุด - VIP Tables
+    { id: '19', number: 19, seats: 8, position: { x: 25, y: 72 }, isAvailable: false, isSelected: false },
+    { id: '20', number: 20, seats: 8, position: { x: 50, y: 70 }, isAvailable: true, isSelected: false },
+    { id: '21', number: 21, seats: 8, position: { x: 75, y: 72 }, isAvailable: true, isSelected: false },
+
+    // Balcony Level - แถวสูง
+    { id: '22', number: 22, seats: 4, position: { x: 30, y: 85 }, isAvailable: false, isSelected: false },
+    { id: '23', number: 23, seats: 4, position: { x: 50, y: 83 }, isAvailable: true, isSelected: false },
+    { id: '24', number: 24, seats: 4, position: { x: 70, y: 85 }, isAvailable: true, isSelected: false }
   ],
 
-  // Zog Riverside - แถวริมน้ำไปหลัง
+  // 🌊 Zog Riverside - CONCEPT: Waterfront Terrace (ระเบียงริมน้ำ)
+  // จัดเป็นชั้นๆ ตามความสูงของระเบียง วิวดีที่สุดด้านหน้า
   '2': [
-    // แถวริมน้ำ (y: 20) - วิวสวยที่สุด
-    { id: '1', number: 1, seats: 2, position: { x: 15, y: 20 }, isAvailable: false, isSelected: false },
-    { id: '2', number: 2, seats: 2, position: { x: 30, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '3', number: 3, seats: 2, position: { x: 45, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '4', number: 4, seats: 2, position: { x: 60, y: 20 }, isAvailable: false, isSelected: false },
-    { id: '5', number: 5, seats: 2, position: { x: 75, y: 20 }, isAvailable: true, isSelected: false },
+    // Waterfront Deck - ชั้นล่างสุด ติดแม่น้ำ
+    { id: '1', number: 1, seats: 2, position: { x: 15, y: 15 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 30, y: 15 }, isAvailable: false, isSelected: false },
+    { id: '3', number: 3, seats: 2, position: { x: 45, y: 15 }, isAvailable: true, isSelected: false },
+    { id: '4', number: 4, seats: 2, position: { x: 60, y: 15 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 2, position: { x: 75, y: 15 }, isAvailable: false, isSelected: false },
+    { id: '6', number: 6, seats: 2, position: { x: 85, y: 15 }, isAvailable: true, isSelected: false },
 
-    // แถวที่ 2 (y: 35)
-    { id: '6', number: 6, seats: 4, position: { x: 20, y: 35 }, isAvailable: true, isSelected: false },
-    { id: '7', number: 7, seats: 4, position: { x: 40, y: 35 }, isAvailable: false, isSelected: false },
-    { id: '8', number: 8, seats: 4, position: { x: 60, y: 35 }, isAvailable: true, isSelected: false },
-    { id: '9', number: 9, seats: 4, position: { x: 80, y: 35 }, isAvailable: true, isSelected: false },
+    // Lower Terrace - ชั้นที่ 2
+    { id: '7', number: 7, seats: 4, position: { x: 20, y: 28 }, isAvailable: false, isSelected: false },
+    { id: '8', number: 8, seats: 4, position: { x: 40, y: 28 }, isAvailable: true, isSelected: false },
+    { id: '9', number: 9, seats: 4, position: { x: 60, y: 28 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 4, position: { x: 80, y: 28 }, isAvailable: false, isSelected: false },
 
-    // แถวที่ 3 (y: 50)
-    { id: '10', number: 10, seats: 4, position: { x: 15, y: 50 }, isAvailable: true, isSelected: false },
-    { id: '11', number: 11, seats: 4, position: { x: 35, y: 50 }, isAvailable: true, isSelected: false },
-    { id: '12', number: 12, seats: 4, position: { x: 55, y: 50 }, isAvailable: false, isSelected: false },
-    { id: '13', number: 13, seats: 4, position: { x: 75, y: 50 }, isAvailable: true, isSelected: false },
+    // Mid Terrace - ชั้นที่ 3
+    { id: '11', number: 11, seats: 4, position: { x: 15, y: 42 }, isAvailable: true, isSelected: false },
+    { id: '12', number: 12, seats: 4, position: { x: 35, y: 42 }, isAvailable: false, isSelected: false },
+    { id: '13', number: 13, seats: 4, position: { x: 55, y: 42 }, isAvailable: true, isSelected: false },
+    { id: '14', number: 14, seats: 4, position: { x: 75, y: 42 }, isAvailable: true, isSelected: false },
+    { id: '15', number: 15, seats: 6, position: { x: 90, y: 42 }, isAvailable: false, isSelected: false },
 
-    // แถวที่ 4 (y: 65)
-    { id: '14', number: 14, seats: 6, position: { x: 25, y: 65 }, isAvailable: false, isSelected: false },
-    { id: '15', number: 15, seats: 6, position: { x: 50, y: 65 }, isAvailable: true, isSelected: false },
-    { id: '16', number: 16, seats: 6, position: { x: 75, y: 65 }, isAvailable: true, isSelected: false },
+    // Upper Terrace - ชั้นที่ 4
+    { id: '16', number: 16, seats: 6, position: { x: 25, y: 58 }, isAvailable: true, isSelected: false },
+    { id: '17', number: 17, seats: 6, position: { x: 50, y: 58 }, isAvailable: false, isSelected: false },
+    { id: '18', number: 18, seats: 6, position: { x: 75, y: 58 }, isAvailable: true, isSelected: false },
 
-    // แถวหลังสุด (y: 80)
-    { id: '17', number: 17, seats: 8, position: { x: 35, y: 80 }, isAvailable: false, isSelected: false },
-    { id: '18', number: 18, seats: 8, position: { x: 65, y: 80 }, isAvailable: true, isSelected: false }
+    // Private Dining - ชั้นบนสุด
+    { id: '19', number: 19, seats: 8, position: { x: 30, y: 75 }, isAvailable: false, isSelected: false },
+    { id: '20', number: 20, seats: 8, position: { x: 60, y: 75 }, isAvailable: true, isSelected: false },
+    { id: '21', number: 21, seats: 10, position: { x: 85, y: 75 }, isAvailable: true, isSelected: false },
+
+    // Sunset Lounge - มุมพิเศษ
+    { id: '22', number: 22, seats: 4, position: { x: 10, y: 85 }, isAvailable: false, isSelected: false },
+    { id: '23', number: 23, seats: 6, position: { x: 45, y: 88 }, isAvailable: true, isSelected: false }
   ],
 
-  // Zog Rooftop - รอบสระว่ายน้ำ
+  // 🏊‍♂️ Zog Rooftop - CONCEPT: Pool Deck (รอบสระว่ายน้ำ) - เก็บไว้เหมือนเดิมเพราะดีแล้ว
   '3': [
     // บาร์เคาน์เตอร์ (y: 15)
     { id: '1', number: 1, seats: 2, position: { x: 20, y: 15 }, isAvailable: true, isSelected: false },
@@ -190,99 +207,125 @@ export const restaurantTables: { [key: string]: Table[] } = {
     { id: '22', number: 22, seats: 8, position: { x: 65, y: 90 }, isAvailable: false, isSelected: false }
   ],
 
-  // Zog Garden - กระจายในสวน
+  // 🌳 Zog Garden - CONCEPT: Garden Paths (ทางเดินในสวน)
+  // จัดตามทางเดินโค้งในสวน มีต้นไม้เป็นจุดแบ่ง
   '4': [
-    // แถวหน้า - ใต้ต้นไม้ (y: 20)
-    { id: '1', number: 1, seats: 2, position: { x: 20, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '2', number: 2, seats: 2, position: { x: 40, y: 20 }, isAvailable: false, isSelected: false },
-    { id: '3', number: 3, seats: 2, position: { x: 60, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '4', number: 4, seats: 2, position: { x: 80, y: 20 }, isAvailable: true, isSelected: false },
+    // Garden Entrance - ทางเข้าสวน
+    { id: '1', number: 1, seats: 2, position: { x: 45, y: 15 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 55, y: 15 }, isAvailable: false, isSelected: false },
 
-    // แถวที่ 2 (y: 35)
-    { id: '5', number: 5, seats: 4, position: { x: 15, y: 35 }, isAvailable: false, isSelected: false },
-    { id: '6', number: 6, seats: 4, position: { x: 35, y: 35 }, isAvailable: true, isSelected: false },
-    { id: '7', number: 7, seats: 4, position: { x: 55, y: 35 }, isAvailable: true, isSelected: false },
-    { id: '8', number: 8, seats: 4, position: { x: 75, y: 35 }, isAvailable: false, isSelected: false },
+    // Left Garden Path - ทางเดินซ้าย (โค้งไปซ้าย)
+    { id: '3', number: 3, seats: 4, position: { x: 25, y: 25 }, isAvailable: true, isSelected: false },
+    { id: '4', number: 4, seats: 4, position: { x: 20, y: 35 }, isAvailable: false, isSelected: false },
+    { id: '5', number: 5, seats: 4, position: { x: 18, y: 45 }, isAvailable: true, isSelected: false },
+    { id: '6', number: 6, seats: 6, position: { x: 20, y: 58 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 6, position: { x: 25, y: 70 }, isAvailable: false, isSelected: false },
 
-    // แถวที่ 3 (y: 50)
-    { id: '9', number: 9, seats: 4, position: { x: 20, y: 50 }, isAvailable: true, isSelected: false },
-    { id: '10', number: 10, seats: 4, position: { x: 40, y: 50 }, isAvailable: false, isSelected: false },
-    { id: '11', number: 11, seats: 4, position: { x: 60, y: 50 }, isAvailable: true, isSelected: false },
-    { id: '12', number: 12, seats: 4, position: { x: 80, y: 50 }, isAvailable: true, isSelected: false },
+    // Right Garden Path - ทางเดินขวา (โค้งไปขวา)
+    { id: '8', number: 8, seats: 4, position: { x: 75, y: 25 }, isAvailable: false, isSelected: false },
+    { id: '9', number: 9, seats: 4, position: { x: 80, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 4, position: { x: 82, y: 45 }, isAvailable: true, isSelected: false },
+    { id: '11', number: 11, seats: 6, position: { x: 80, y: 58 }, isAvailable: false, isSelected: false },
+    { id: '12', number: 12, seats: 6, position: { x: 75, y: 70 }, isAvailable: true, isSelected: false },
 
-    // แถวที่ 4 (y: 65)
-    { id: '13', number: 13, seats: 6, position: { x: 25, y: 65 }, isAvailable: false, isSelected: false },
-    { id: '14', number: 14, seats: 6, position: { x: 50, y: 65 }, isAvailable: true, isSelected: false },
-    { id: '15', number: 15, seats: 6, position: { x: 75, y: 65 }, isAvailable: true, isSelected: false },
+    // Center Garden - กลางสวน (รอบน้ำพุ)
+    { id: '13', number: 13, seats: 4, position: { x: 45, y: 30 }, isAvailable: true, isSelected: false },
+    { id: '14', number: 14, seats: 4, position: { x: 55, y: 30 }, isAvailable: false, isSelected: false },
+    { id: '15', number: 15, seats: 6, position: { x: 40, y: 45 }, isAvailable: true, isSelected: false },
+    { id: '16', number: 16, seats: 6, position: { x: 60, y: 45 }, isAvailable: true, isSelected: false },
 
-    // แถวหลังสุด (y: 80)
-    { id: '16', number: 16, seats: 8, position: { x: 30, y: 80 }, isAvailable: false, isSelected: false },
-    { id: '17', number: 17, seats: 8, position: { x: 60, y: 80 }, isAvailable: true, isSelected: false },
-    { id: '18', number: 18, seats: 6, position: { x: 85, y: 80 }, isAvailable: true, isSelected: false }
+    // Secret Garden - มุมลับในสวน
+    { id: '17', number: 17, seats: 8, position: { x: 50, y: 62 }, isAvailable: false, isSelected: false },
+
+    // Garden Pavilion - ศาลาในสวน
+    { id: '18', number: 18, seats: 8, position: { x: 35, y: 80 }, isAvailable: true, isSelected: false },
+    { id: '19', number: 19, seats: 8, position: { x: 65, y: 80 }, isAvailable: false, isSelected: false },
+
+    // Tree House Tables - โต๊ะใต้ต้นไม้ใหญ่
+    { id: '20', number: 20, seats: 4, position: { x: 15, y: 85 }, isAvailable: true, isSelected: false },
+    { id: '21', number: 21, seats: 4, position: { x: 85, y: 85 }, isAvailable: true, isSelected: false }
   ],
 
-  // Zog Underground - รอบ Dance Floor
+  // 🎵 Zog Underground - CONCEPT: Club Arena (สนามไนท์คลับ)
+  // จัดรอบ Dance Floor แบบ Arena มี VIP Booth ด้านข้าง
   '5': [
-    // VIP Booths - ด้านซ้าย
-    { id: '1', number: 1, seats: 6, position: { x: 10, y: 20 }, isAvailable: false, isSelected: false },
-    { id: '2', number: 2, seats: 6, position: { x: 10, y: 35 }, isAvailable: true, isSelected: false },
-    { id: '3', number: 3, seats: 8, position: { x: 10, y: 50 }, isAvailable: true, isSelected: false },
-    { id: '4', number: 4, seats: 8, position: { x: 10, y: 65 }, isAvailable: false, isSelected: false },
-    { id: '5', number: 5, seats: 6, position: { x: 10, y: 80 }, isAvailable: true, isSelected: false },
+    // VIP Booths - Left Side (ด้านซ้าย - VIP Booths สูง)
+    { id: '1', number: 1, seats: 8, position: { x: 8, y: 20 }, isAvailable: false, isSelected: false },
+    { id: '2', number: 2, seats: 8, position: { x: 8, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '3', number: 3, seats: 8, position: { x: 8, y: 50 }, isAvailable: true, isSelected: false },
+    { id: '4', number: 4, seats: 8, position: { x: 8, y: 65 }, isAvailable: false, isSelected: false },
+    { id: '5', number: 5, seats: 8, position: { x: 8, y: 80 }, isAvailable: true, isSelected: false },
 
-    // VIP Booths - ด้านขวา
-    { id: '6', number: 6, seats: 6, position: { x: 90, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '7', number: 7, seats: 6, position: { x: 90, y: 35 }, isAvailable: false, isSelected: false },
-    { id: '8', number: 8, seats: 8, position: { x: 90, y: 50 }, isAvailable: true, isSelected: false },
-    { id: '9', number: 9, seats: 8, position: { x: 90, y: 65 }, isAvailable: true, isSelected: false },
-    { id: '10', number: 10, seats: 6, position: { x: 90, y: 80 }, isAvailable: false, isSelected: false },
+    // VIP Booths - Right Side (ด้านขวา - VIP Booths สูง)
+    { id: '6', number: 6, seats: 8, position: { x: 92, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 8, position: { x: 92, y: 35 }, isAvailable: false, isSelected: false },
+    { id: '8', number: 8, seats: 8, position: { x: 92, y: 50 }, isAvailable: true, isSelected: false },
+    { id: '9', number: 9, seats: 8, position: { x: 92, y: 65 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 8, position: { x: 92, y: 80 }, isAvailable: false, isSelected: false },
 
-    // รอบ Dance Floor - แถวบน (y: 25)
-    { id: '11', number: 11, seats: 4, position: { x: 30, y: 25 }, isAvailable: true, isSelected: false },
-    { id: '12', number: 12, seats: 4, position: { x: 45, y: 25 }, isAvailable: false, isSelected: false },
-    { id: '13', number: 13, seats: 4, position: { x: 60, y: 25 }, isAvailable: true, isSelected: false },
-    { id: '14', number: 14, seats: 4, position: { x: 75, y: 25 }, isAvailable: true, isSelected: false },
+    // Arena Level - รอบ Dance Floor (ระดับล่าง)
+    { id: '11', number: 11, seats: 4, position: { x: 25, y: 22 }, isAvailable: true, isSelected: false },
+    { id: '12', number: 12, seats: 4, position: { x: 40, y: 20 }, isAvailable: false, isSelected: false },
+    { id: '13', number: 13, seats: 4, position: { x: 60, y: 20 }, isAvailable: true, isSelected: false },
+    { id: '14', number: 14, seats: 4, position: { x: 75, y: 22 }, isAvailable: true, isSelected: false },
 
-    // รอบ Dance Floor - แถวล่าง (y: 75)
-    { id: '15', number: 15, seats: 4, position: { x: 30, y: 75 }, isAvailable: false, isSelected: false },
-    { id: '16', number: 16, seats: 4, position: { x: 45, y: 75 }, isAvailable: true, isSelected: false },
-    { id: '17', number: 17, seats: 4, position: { x: 60, y: 75 }, isAvailable: true, isSelected: false },
-    { id: '18', number: 18, seats: 4, position: { x: 75, y: 75 }, isAvailable: false, isSelected: false },
+    // Arena Level - ด้านล่าง Dance Floor
+    { id: '15', number: 15, seats: 4, position: { x: 25, y: 78 }, isAvailable: false, isSelected: false },
+    { id: '16', number: 16, seats: 4, position: { x: 40, y: 80 }, isAvailable: true, isSelected: false },
+    { id: '17', number: 17, seats: 4, position: { x: 60, y: 80 }, isAvailable: true, isSelected: false },
+    { id: '18', number: 18, seats: 4, position: { x: 75, y: 78 }, isAvailable: false, isSelected: false },
 
-    // Premium Tables - แถวหลังสุด (y: 90)
-    { id: '19', number: 19, seats: 8, position: { x: 35, y: 90 }, isAvailable: false, isSelected: false },
-    { id: '20', number: 20, seats: 8, position: { x: 65, y: 90 }, isAvailable: true, isSelected: false }
+    // Mezzanine Level - ชั้นกลาง (elevated)
+    { id: '19', number: 19, seats: 6, position: { x: 20, y: 40 }, isAvailable: true, isSelected: false },
+    { id: '20', number: 20, seats: 6, position: { x: 30, y: 35 }, isAvailable: false, isSelected: false },
+    { id: '21', number: 21, seats: 6, position: { x: 70, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '22', number: 22, seats: 6, position: { x: 80, y: 40 }, isAvailable: true, isSelected: false },
+
+    // Mezzanine Level - ด้านล่าง
+    { id: '23', number: 23, seats: 6, position: { x: 20, y: 60 }, isAvailable: false, isSelected: false },
+    { id: '24', number: 24, seats: 6, position: { x: 30, y: 65 }, isAvailable: true, isSelected: false },
+    { id: '25', number: 25, seats: 6, position: { x: 70, y: 65 }, isAvailable: false, isSelected: false },
+    { id: '26', number: 26, seats: 6, position: { x: 80, y: 60 }, isAvailable: true, isSelected: false }
   ],
 
-  // Zog Classic - Traditional layout
+  // 🥃 Zog Classic - CONCEPT: Gentleman's Club (สโมสรสุภาพบุรุษ)
+  // จัดแบบห้องสมุด มีโซนต่างๆ แยกชัดเจน
   '6': [
-    // บาร์เคาน์เตอร์ (y: 20)
-    { id: '1', number: 1, seats: 2, position: { x: 20, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '2', number: 2, seats: 2, position: { x: 35, y: 20 }, isAvailable: false, isSelected: false },
-    { id: '3', number: 3, seats: 2, position: { x: 50, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '4', number: 4, seats: 2, position: { x: 65, y: 20 }, isAvailable: true, isSelected: false },
-    { id: '5', number: 5, seats: 2, position: { x: 80, y: 20 }, isAvailable: false, isSelected: false },
+    // Bar Counter - เคาน์เตอร์บาร์หลัก
+    { id: '1', number: 1, seats: 2, position: { x: 20, y: 18 }, isAvailable: true, isSelected: false },
+    { id: '2', number: 2, seats: 2, position: { x: 30, y: 18 }, isAvailable: false, isSelected: false },
+    { id: '3', number: 3, seats: 2, position: { x: 40, y: 18 }, isAvailable: true, isSelected: false },
+    { id: '4', number: 4, seats: 2, position: { x: 50, y: 18 }, isAvailable: true, isSelected: false },
+    { id: '5', number: 5, seats: 2, position: { x: 60, y: 18 }, isAvailable: false, isSelected: false },
+    { id: '6', number: 6, seats: 2, position: { x: 70, y: 18 }, isAvailable: true, isSelected: false },
+    { id: '7', number: 7, seats: 2, position: { x: 80, y: 18 }, isAvailable: true, isSelected: false },
 
-    // แถวที่ 2 (y: 35)
-    { id: '6', number: 6, seats: 4, position: { x: 25, y: 35 }, isAvailable: false, isSelected: false },
-    { id: '7', number: 7, seats: 4, position: { x: 45, y: 35 }, isAvailable: true, isSelected: false },
-    { id: '8', number: 8, seats: 4, position: { x: 65, y: 35 }, isAvailable: true, isSelected: false },
-    { id: '9', number: 9, seats: 4, position: { x: 85, y: 35 }, isAvailable: false, isSelected: false },
+    // Whiskey Lounge - มุมวิสกี้ (ด้านซ้าย)
+    { id: '8', number: 8, seats: 4, position: { x: 15, y: 35 }, isAvailable: false, isSelected: false },
+    { id: '9', number: 9, seats: 4, position: { x: 15, y: 50 }, isAvailable: true, isSelected: false },
+    { id: '10', number: 10, seats: 6, position: { x: 15, y: 65 }, isAvailable: true, isSelected: false },
 
-    // แถวที่ 3 (y: 50)
-    { id: '10', number: 10, seats: 4, position: { x: 20, y: 50 }, isAvailable: true, isSelected: false },
-    { id: '11', number: 11, seats: 4, position: { x: 40, y: 50 }, isAvailable: false, isSelected: false },
-    { id: '12', number: 12, seats: 4, position: { x: 60, y: 50 }, isAvailable: true, isSelected: false },
-    { id: '13', number: 13, seats: 4, position: { x: 80, y: 50 }, isAvailable: true, isSelected: false },
+    // Cigar Room - ห้องซิการ์ (ด้านขวา)
+    { id: '11', number: 11, seats: 4, position: { x: 85, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '12', number: 12, seats: 4, position: { x: 85, y: 50 }, isAvailable: false, isSelected: false },
+    { id: '13', number: 13, seats: 6, position: { x: 85, y: 65 }, isAvailable: true, isSelected: false },
 
-    // แถวที่ 4 (y: 65)
-    { id: '14', number: 14, seats: 6, position: { x: 30, y: 65 }, isAvailable: false, isSelected: false },
-    { id: '15', number: 15, seats: 6, position: { x: 55, y: 65 }, isAvailable: true, isSelected: false },
-    { id: '16', number: 16, seats: 6, position: { x: 80, y: 65 }, isAvailable: true, isSelected: false },
+    // Library Section - มุมหนังสือ (กลาง)
+    { id: '14', number: 14, seats: 4, position: { x: 35, y: 35 }, isAvailable: true, isSelected: false },
+    { id: '15', number: 15, seats: 4, position: { x: 50, y: 35 }, isAvailable: false, isSelected: false },
+    { id: '16', number: 16, seats: 4, position: { x: 65, y: 35 }, isAvailable: true, isSelected: false },
 
-    // แถวหลังสุด (y: 80)
-    { id: '17', number: 17, seats: 8, position: { x: 35, y: 80 }, isAvailable: false, isSelected: false },
-    { id: '18', number: 18, seats: 8, position: { x: 65, y: 80 }, isAvailable: true, isSelected: false }
+    // Fireplace Lounge - มุมเตาผิง
+    { id: '17', number: 17, seats: 6, position: { x: 35, y: 52 }, isAvailable: false, isSelected: false },
+    { id: '18', number: 18, seats: 6, position: { x: 65, y: 52 }, isAvailable: true, isSelected: false },
+
+    // Billiard Area - โซนบิลเลียด
+    { id: '19', number: 19, seats: 4, position: { x: 25, y: 75 }, isAvailable: true, isSelected: false },
+    { id: '20', number: 20, seats: 4, position: { x: 45, y: 75 }, isAvailable: false, isSelected: false },
+    { id: '21', number: 21, seats: 4, position: { x: 65, y: 75 }, isAvailable: true, isSelected: false },
+
+    // Private Dining - ห้องส่วนตัว
+    { id: '22', number: 22, seats: 8, position: { x: 50, y: 88 }, isAvailable: true, isSelected: false }
   ]
 };
 

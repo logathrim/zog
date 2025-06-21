@@ -58,6 +58,63 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
     }
   };
 
+  // Get restaurant-specific layout info
+  const getLayoutInfo = () => {
+    switch (restaurant?.id) {
+      case '1':
+        return {
+          title: 'Theater Layout',
+          subtitle: 'เวทีแสดง',
+          description: 'จัดเรียงแบบโรงละคร หันหน้าเข้าหาเวที',
+          centerElement: null
+        };
+      case '2':
+        return {
+          title: 'Waterfront Terrace',
+          subtitle: 'วิวแม่น้ำ',
+          description: 'ระเบียงชั้นๆ วิวแม่น้ำสวยที่สุด',
+          centerElement: null
+        };
+      case '3':
+        return {
+          title: 'Pool Deck',
+          subtitle: 'บาร์เคาน์เตอร์',
+          description: 'รอบสระว่ายน้ำ บรรยากาศรูฟท็อป',
+          centerElement: 'Pool'
+        };
+      case '4':
+        return {
+          title: 'Garden Paths',
+          subtitle: 'สวนกลาง',
+          description: 'ทางเดินในสวน ท่ามกลางธรรมชาติ',
+          centerElement: 'Fountain'
+        };
+      case '5':
+        return {
+          title: 'Club Arena',
+          subtitle: 'Dance Floor',
+          description: 'รอบเวทีเต้นรำ บรรยากาศไนท์คลับ',
+          centerElement: 'Dance Floor'
+        };
+      case '6':
+        return {
+          title: 'Gentleman\'s Club',
+          subtitle: 'บาร์หลัก',
+          description: 'สโมสรสุภาพบุรุษ มีโซนต่างๆ',
+          centerElement: 'Fireplace'
+        };
+      default:
+        return {
+          title: 'Restaurant Layout',
+          subtitle: 'พื้นที่หลัก',
+          description: 'จัดเรียงโต๊ะอาหาร',
+          centerElement: null
+        };
+    }
+  };
+
+  const layoutInfo = getLayoutInfo();
+
   if (!restaurant) return null;
 
   return (
@@ -99,22 +156,22 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="bg-gradient-to-br from-gray-900 to-purple-900 rounded-2xl p-6 shadow-2xl border border-purple-500/20">
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
+            <h2 className="text-2xl font-bold text-white mb-2 flex items-center">
               <Calendar className="mr-3 h-6 w-6 text-amber-400" />
               เลือกโต๊ะของคุณ
             </h2>
+            <div className="mb-4">
+              <p className="text-amber-300 text-sm font-medium">{layoutInfo.title}</p>
+              <p className="text-gray-400 text-xs">{layoutInfo.description}</p>
+            </div>
 
             <div className="relative bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 rounded-2xl p-6 min-h-[500px] border border-gray-700/50 shadow-inner overflow-hidden">
-              {/* Stage/Bar Area */}
+              {/* Main Feature Area */}
               <div className="absolute top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border-2 border-amber-500/40 rounded-lg px-4 py-2 backdrop-blur-sm z-20">
                 <div className="flex items-center space-x-2">
                   <Music className="h-3 w-3 text-amber-400" />
                   <span className="text-amber-300 text-xs font-semibold">
-                    {restaurant.id === '1' ? 'เวทีแสดง' : 
-                     restaurant.id === '2' ? 'วิวแม่น้ำ' :
-                     restaurant.id === '3' ? 'บาร์เคาน์เตอร์' :
-                     restaurant.id === '4' ? 'สวนกลาง' :
-                     restaurant.id === '5' ? 'Dance Floor' : 'บาร์หลัก'}
+                    {layoutInfo.subtitle}
                   </span>
                 </div>
               </div>
@@ -124,14 +181,29 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
               <div className="absolute top-0 left-0 w-24 h-24 bg-gradient-radial from-amber-500/10 to-transparent rounded-full blur-xl"></div>
               <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-radial from-purple-500/10 to-transparent rounded-full blur-xl"></div>
 
-              {/* Layout Guide Lines (subtle) */}
-              {restaurant.id === '1' && (
-                <>
-                  <div className="absolute top-[25%] left-[10%] right-[10%] h-px bg-gray-600/10"></div>
-                  <div className="absolute top-[40%] left-[10%] right-[10%] h-px bg-gray-600/10"></div>
-                  <div className="absolute top-[55%] left-[10%] right-[10%] h-px bg-gray-600/10"></div>
-                  <div className="absolute top-[70%] left-[10%] right-[10%] h-px bg-gray-600/10"></div>
-                </>
+              {/* Special Center Elements */}
+              {layoutInfo.centerElement === 'Pool' && (
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-12 bg-blue-500/10 border border-blue-400/30 rounded-lg flex items-center justify-center">
+                  <span className="text-blue-300 text-xs">Pool</span>
+                </div>
+              )}
+
+              {layoutInfo.centerElement === 'Dance Floor' && (
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-16 bg-purple-500/10 border border-purple-400/30 rounded-lg flex items-center justify-center">
+                  <span className="text-purple-300 text-xs">Dance Floor</span>
+                </div>
+              )}
+
+              {layoutInfo.centerElement === 'Fountain' && (
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-cyan-500/10 border border-cyan-400/30 rounded-full flex items-center justify-center">
+                  <span className="text-cyan-300 text-xs">🌊</span>
+                </div>
+              )}
+
+              {layoutInfo.centerElement === 'Fireplace' && (
+                <div className="absolute top-[52%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-18 h-12 bg-orange-500/10 border border-orange-400/30 rounded-lg flex items-center justify-center">
+                  <span className="text-orange-300 text-xs">🔥</span>
+                </div>
               )}
 
               {/* Tables */}
@@ -182,19 +254,6 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
                   </div>
                 </button>
               ))}
-
-              {/* Special Areas for different restaurants */}
-              {restaurant.id === '3' && (
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-12 bg-blue-500/10 border border-blue-400/30 rounded-lg flex items-center justify-center">
-                  <span className="text-blue-300 text-xs">Pool</span>
-                </div>
-              )}
-
-              {restaurant.id === '5' && (
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-16 bg-purple-500/10 border border-purple-400/30 rounded-lg flex items-center justify-center">
-                  <span className="text-purple-300 text-xs">Dance Floor</span>
-                </div>
-              )}
             </div>
 
             <div className="mt-4 flex items-center justify-between text-sm bg-gray-800/50 rounded-xl p-4">
