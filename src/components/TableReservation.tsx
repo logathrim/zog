@@ -63,50 +63,50 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
     switch (restaurant?.id) {
       case '1':
         return {
-          title: 'Theater Layout',
-          subtitle: 'เวทีแสดง',
-          description: 'จัดเรียงแบบโรงละคร หันหน้าเข้าหาเวที',
+          title: 'Club Layout',
+          subtitle: 'STAGE',
+          description: 'แบบจริงของคลับ - VIP, Premium, Regular zones',
           centerElement: null
         };
       case '2':
         return {
-          title: 'Waterfront Terrace',
-          subtitle: 'วิวแม่น้ำ',
+          title: 'Riverside Terrace',
+          subtitle: 'RIVER VIEW',
           description: 'ระเบียงชั้นๆ วิวแม่น้ำสวยที่สุด',
           centerElement: null
         };
       case '3':
         return {
           title: 'Pool Deck',
-          subtitle: 'บาร์เคาน์เตอร์',
+          subtitle: 'BAR COUNTER',
           description: 'รอบสระว่ายน้ำ บรรยากาศรูฟท็อป',
           centerElement: 'Pool'
         };
       case '4':
         return {
           title: 'Garden Paths',
-          subtitle: 'สวนกลาง',
+          subtitle: 'GARDEN CENTER',
           description: 'ทางเดินในสวน ท่ามกลางธรรมชาติ',
           centerElement: 'Fountain'
         };
       case '5':
         return {
           title: 'Club Arena',
-          subtitle: 'Dance Floor',
+          subtitle: 'DANCE FLOOR',
           description: 'รอบเวทีเต้นรำ บรรยากาศไนท์คลับ',
           centerElement: 'Dance Floor'
         };
       case '6':
         return {
           title: 'Gentleman\'s Club',
-          subtitle: 'บาร์หลัก',
+          subtitle: 'MAIN BAR',
           description: 'สโมสรสุภาพบุรุษ มีโซนต่างๆ',
           centerElement: 'Fireplace'
         };
       default:
         return {
           title: 'Restaurant Layout',
-          subtitle: 'พื้นที่หลัก',
+          subtitle: 'MAIN AREA',
           description: 'จัดเรียงโต๊ะอาหาร',
           centerElement: null
         };
@@ -165,10 +165,10 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
               <p className="text-gray-400 text-xs">{layoutInfo.description}</p>
             </div>
 
-            <div className="relative bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 rounded-2xl p-6 min-h-[500px] border border-gray-700/50 shadow-inner overflow-hidden">
+            <div className="relative bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 rounded-2xl p-4 min-h-[500px] border border-gray-700/50 shadow-inner overflow-hidden">
               {/* Main Feature Area */}
-              <div className="absolute top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border-2 border-amber-500/40 rounded-lg px-4 py-2 backdrop-blur-sm z-20">
-                <div className="flex items-center space-x-2">
+              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/40 rounded-lg px-3 py-1 backdrop-blur-sm z-20">
+                <div className="flex items-center space-x-1">
                   <Music className="h-3 w-3 text-amber-400" />
                   <span className="text-amber-300 text-xs font-semibold">
                     {layoutInfo.subtitle}
@@ -178,35 +178,35 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
 
               {/* Background Effects */}
               <div className="absolute inset-0 bg-gradient-radial from-purple-500/5 via-transparent to-transparent rounded-2xl"></div>
-              <div className="absolute top-0 left-0 w-24 h-24 bg-gradient-radial from-amber-500/10 to-transparent rounded-full blur-xl"></div>
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-radial from-purple-500/10 to-transparent rounded-full blur-xl"></div>
+              <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-radial from-amber-500/10 to-transparent rounded-full blur-xl"></div>
+              <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-radial from-purple-500/10 to-transparent rounded-full blur-xl"></div>
 
               {/* Special Center Elements */}
               {layoutInfo.centerElement === 'Pool' && (
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-12 bg-blue-500/10 border border-blue-400/30 rounded-lg flex items-center justify-center">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-10 bg-blue-500/10 border border-blue-400/30 rounded-lg flex items-center justify-center">
                   <span className="text-blue-300 text-xs">Pool</span>
                 </div>
               )}
 
               {layoutInfo.centerElement === 'Dance Floor' && (
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-16 bg-purple-500/10 border border-purple-400/30 rounded-lg flex items-center justify-center">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-12 bg-purple-500/10 border border-purple-400/30 rounded-lg flex items-center justify-center">
                   <span className="text-purple-300 text-xs">Dance Floor</span>
                 </div>
               )}
 
               {layoutInfo.centerElement === 'Fountain' && (
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-cyan-500/10 border border-cyan-400/30 rounded-full flex items-center justify-center">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-cyan-500/10 border border-cyan-400/30 rounded-full flex items-center justify-center">
                   <span className="text-cyan-300 text-xs">🌊</span>
                 </div>
               )}
 
               {layoutInfo.centerElement === 'Fireplace' && (
-                <div className="absolute top-[52%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-18 h-12 bg-orange-500/10 border border-orange-400/30 rounded-lg flex items-center justify-center">
+                <div className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-14 h-8 bg-orange-500/10 border border-orange-400/30 rounded-lg flex items-center justify-center">
                   <span className="text-orange-300 text-xs">🔥</span>
                 </div>
               )}
 
-              {/* Tables */}
+              {/* Tables - ขนาดเล็กลงเพื่อให้ดูเหมือนจริง */}
               {tables.map((table) => (
                 <button
                   key={table.id}
@@ -216,9 +216,9 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
                   disabled={!table.isAvailable}
                   className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-200 group ${
                     table.isSelected
-                      ? "scale-110 z-10"
+                      ? "scale-125 z-10"
                       : table.isAvailable
-                      ? "hover:scale-105 z-0"
+                      ? "hover:scale-110 z-0"
                       : "cursor-not-allowed opacity-50"
                   }`}
                   style={{
@@ -227,7 +227,7 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
                   }}
                 >
                   <div
-                    className={`relative w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold shadow-md border transition-all duration-200 ${
+                    className={`relative w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold shadow-md border transition-all duration-200 ${
                       table.isSelected
                         ? "bg-gradient-to-br from-amber-400 to-orange-500 text-white border-amber-300 shadow-amber-500/50 shadow-lg"
                         : table.isAvailable
@@ -235,18 +235,18 @@ export default function TableReservation({ restaurant, onBackToSelection }: Tabl
                         : "bg-gradient-to-br from-red-500 to-red-600 text-white border-red-400 shadow-red-500/20"
                     }`}
                   >
-                    <span className="relative z-10">{table.number}</span>
+                    <span className="relative z-10 text-[10px]">{table.number}</span>
                     {table.isSelected && (
-                      <div className="absolute inset-0 bg-gradient-to-br from-amber-400/30 to-orange-500/30 rounded-lg animate-pulse"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-400/30 to-orange-500/30 rounded-md animate-pulse"></div>
                     )}
                     {table.isAvailable && !table.isSelected && (
-                      <div className="absolute -inset-0.5 bg-gradient-to-br from-emerald-400/20 to-green-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-br from-emerald-400/20 to-green-500/20 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                     )}
                   </div>
 
                   {/* Tooltip */}
                   <div
-                    className={`absolute -bottom-5 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none ${
+                    className={`absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-sm text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none ${
                       !table.isAvailable ? "hidden" : ""
                     }`}
                   >
